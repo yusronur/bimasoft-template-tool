@@ -16,6 +16,7 @@ for file_name in tqdm(xlsm_files, desc="Processing files", unit="file"):
     # pisahkan nama mapel dan kelas
     # dalam hal ini format nama mapel yang digunakan
     # cth : 102023-PRAKARYA-KELAS 9.xlsm
+    # hapus jika filename tidak sama formatnya dengan di atas
     match = re.match(r'\d{6}-(.+?)-KELAS (\d+)', file_name)
     if match:
         mapel = match.group(1)
@@ -39,8 +40,8 @@ for file_name in tqdm(xlsm_files, desc="Processing files", unit="file"):
         'Kelas':kelas
     })
     
-    # Append the column data to the combined_data DataFrame
+    # gabungkan semua data pada masing masing file dan kolom.
     combined_data = pd.concat([combined_data, file_data], ignore_index=True)
 
-# Create a new Excel file and write the combined data to it
+# buat file baru dan masukkan hasil gabungan dari masing-masing file ke file tsb
 combined_data.to_excel('combine.xlsx', index=False)
