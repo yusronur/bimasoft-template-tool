@@ -27,7 +27,7 @@ for file_name in tqdm(xlsm_files, desc="Processing files", unit="file"):
     # baca file excel file dan ekstrak data pada sheet "HASIL" <= sesuai template excel bimasoft
     df = pd.read_excel(os.path.join(folder_path, file_name), sheet_name='HASIL', engine='openpyxl')
     
-    # Extract the data from the "D" column
+    # Ekstrak data pada kolom "Nilai" dan "No. Peserta"
     nilai = df['Nilai']
     username = df['No. Peserta']
 
