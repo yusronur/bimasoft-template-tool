@@ -1,19 +1,20 @@
-import docx
 import pyperclip
 import re
 
-def ekstrak(txt_path):
-    numbers = []
+def ekstrak(file_path):
+    nomor = []
 
-    with open(txt_path, 'r') as file:
+    with open(file_path, 'r') as file:
         for line in file:
-            # Use regular expression to find matches for the pattern "no=xxxx"
+            # cari menggunakan regex "no=xxxx"
             matches = re.findall(r'no=(\d+)', line)
-            numbers.extend(matches)
+            nomor.extend(matches)
+    
+    #hapus yang ganda dan urutkan
+    unik = list(dict.fromkeys(nomor))
+    return unik
 
-    return numbers
-
-# Replace 'your_document.docm' with the actual path to your Word document
+#ambil data dari ceknomor.txt
 docx_path = 'ceknomor.txt'
 result = ekstrak(docx_path)
 
@@ -23,3 +24,4 @@ for no in result:
 
 print(f'{a}')
 pyperclip.copy(a)
+#hasil nomor otomatis masuk clipboard, tinggal paste :)
