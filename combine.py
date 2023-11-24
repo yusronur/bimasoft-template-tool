@@ -33,7 +33,7 @@ for file_name in tqdm(xlsm_files, desc="Processing files", unit="file"):
     username = df['No. Peserta']
 
     file_data = pd.DataFrame({
-        'File Name': [file_name] * len(df),  # Repeat the file name for each row
+        'File Name': [file_name] * len(df), 
         'Username': username,
         'Nilai': nilai,
         'Mapel':mapel,
