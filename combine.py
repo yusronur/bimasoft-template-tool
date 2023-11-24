@@ -4,7 +4,7 @@ import re
 from tqdm import tqdm
 
 #ambil path tempat excel disimpan
-folder_path = "G:/My Drive/A/B/!CLOUD/2.KESISWAAN_NEW/2023-2024/UJIAN/1. PTS GANJIL 2023-2024/TEMPLATE/excel"
+folder_path = os.path.dirname(os.path.abspath(__file__))
 all_files = os.listdir(folder_path)
 
 xlsm_files = [file for file in all_files if file.endswith('.xlsm')]
